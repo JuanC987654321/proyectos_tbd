@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login de vidrios y aluminios armando</title>
+    </head>
+    <body>
+        <div>
+            <h1>Vidrios y aluminios armando</h1>
+        </div>
+        <main>
+            <section>
+                <form action="php/login.php" method="post">
+                    <fieldset>
+                        <legend>Iniciar Sesion</legend>
+                        <div>
+                            <div>
+                                <label for="">Usuario</label>
+                                <input required type="text" placeholder="usuario" name="registered_account">
+                            </div>
+                            <div>
+                                <label for="">Contraseña</label>
+                                <!-- CAMBIAR EL TYPE A PASSWORD -->
+                                <input required type="text" placeholder="contraseña" name="password">
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" name="enviar" >Iniciar Sesion</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </section>
+            <section>
+                <form action="php/s_folio.php" method="post">
+                    <fieldset>
+                        <legend>Buscar pedido con folio</legend>
+                        <div>
+                            <div>
+                                <label for="">Folio:</label>
+                                <input type="text" placeholder="folio" name="folio">
+                            </div>
+                            <div>                            
+                                <button type="submit" name="buscar" >buscar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </section>
+        </main>
+    </body>
+</html>
