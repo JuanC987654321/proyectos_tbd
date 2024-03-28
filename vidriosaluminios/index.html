@@ -1,51 +1,27 @@
 <!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Login de vidrios y aluminios armando</title>
-    </head>
-    <body>
-        <div>
-            <h1>Vidrios y aluminios armando</h1>
-        </div>
-        <main>
-            <section>
-                <form action="php/login.php" method="post">
-                    <fieldset>
-                        <legend>Iniciar Sesion</legend>
-                        <div>
-                            <div>
-                                <label for="">Usuario</label>
-                                <input required type="text" placeholder="usuario" name="registered_account">
-                            </div>
-                            <div>
-                                <label for="">Contraseña</label>
-                                <!-- CAMBIAR EL TYPE A PASSWORD -->
-                                <input required type="text" placeholder="contraseña" name="password">
-                            </div>
-                        </div>
-                        <div>
-                            <button type="submit" name="enviar" >Iniciar Sesion</button>
-                        </div>
-                    </fieldset>
-                </form>
-            </section>
-            <section>
-                <form action="php/s_folio.php" method="post">
-                    <fieldset>
-                        <legend>Buscar pedido con folio</legend>
-                        <div>
-                            <div>
-                                <label for="">Folio:</label>
-                                <input type="text" placeholder="folio" name="folio">
-                            </div>
-                            <div>                            
-                                <button type="submit" name="buscar" >buscar</button>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
-            </section>
-        </main>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procesos</title>
+    <link href="styles/style.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+   
+    <form action="php/s_folio.php" method="post">
+        <img class="logo" src="images/logo.png" width="50" alt="Foto del logo" >
+        <div class="formulario">
+            <label class="label" for="folio">NÚMERO DE FOLIO:</label>
+            <input type="text" name="folio" required>
+            <input type="submit" value="Ingresar">
+       </div>
+    </form>
+    
+    <footer>
+        <p class="footer-texto text">LLAMANOS<br>(981)815 1091</p>
+        <img class="footer-logo" src="images/icon-llamada.png" alt="Logo de contactanos">
+    </footer>
+</body>
 </html>

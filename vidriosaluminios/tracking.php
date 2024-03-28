@@ -1,7 +1,6 @@
-
-
 <!DOCTYPE html>
 <head>
+    <meta charset="UTF-8">
     <title>PAGINA DE RASTREO</title>
 </head>
 <body>
@@ -9,20 +8,43 @@
         <div>
             <table>
                 <tr>
-                    <td>numero de folio: </td>
-                    <td><?php echo $_COOKIE["folio"] ?></td>
+                    <td><p>Hola <?php echo $_COOKIE["fullname"] ?>!</p></td> 
                 </tr>
                 <tr>
-                    <td>estatus del pedido: </td>
+                    <td>Estado: </td>
                     <td><?php echo $_COOKIE["status"] ?></td>
                 </tr>
                 <tr>
-                    <td>precio: </td>
-                    <td><?php echo $_COOKIE["price"] ?></td>
+                    <td>
+                        <?php
+                        $s = $_COOKIE["status"];
+                        $imagenes = array("images/ph_barra1.png", "images/ph_barra2.png", "images/ph_barra3.png", "images/ph_barra4.png");
+                        if(strcmp($s, "Pending") == 0){
+                            echo '<img src="' . $imagenes[0] . '" alt="">';
+                        }
+                        if(strcmp($s, "In process") == 0){
+                            echo '<img src="' . $imagenes[1] . '" alt="">';
+                        }
+                        if(strcmp($s, "Sent to") == 0){
+                            echo '<img src="' . $imagenes[2] . '" alt="">';
+                        }
+                        if(strcmp($s, "Completed") == 0){
+                            echo '<img src="' . $imagenes[3] . '" alt="">';
+                        }
+                        ?>
+                    </td>
                 </tr>
                 <tr>
-                    <td>abono: </td>
-                    <td><?php echo $_COOKIE["advance_payment"] ?></td>
+                    <td>Cantidad: </td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>Medidas: </td>
+                    <td><?php echo $_COOKIE["width"]?> cm de ancho por <?php echo $_COOKIE["length"]?> cm de largo</td>
+                </tr>
+                <tr>
+                    <td>Abono: </td>
+                    <td><?php echo $_COOKIE["advance_payment"] ?> / <?php echo $_COOKIE["price"] ?></td>
                 </tr>
             </table>
             <hr>
