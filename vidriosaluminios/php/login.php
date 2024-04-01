@@ -1,16 +1,15 @@
 <?php
+require_once 'connect.php';
+$conexion = connect_to_db();
 
-$ip = "localhost";
-$database = "vidrios_aluminios";
-$conexion=mysqli_connect($ip, "root", "", $database);
-
-if(!$conexion){
-    echo ("error en la base de datos");
-    exit;
-}
 
 iniciar_sesion($conexion);
 
+
+//ENCRIPTAR LA CONTRASEÑA TANTO AQUI COMO EN LA BASE DE DATOS
+//ESTA MADRE ESTA COMO TEXTO PLANO TODAVIA Y TIENE DIAS QUE ESTOY
+//AL TANTO DE ESO, NO SE PUEDE QUEDAR ASI, NO VOY A COMETER EL
+//MISMO ERROR 2 VECES
 function iniciar_sesion($conexion){
     $registered_account = $_POST["registered_account"];
     $password = $_POST["password"];
@@ -18,7 +17,6 @@ function iniciar_sesion($conexion){
     $login_query = "SELECT * FROM account
     WHERE Registered_Account LIKE '$registered_account'
     AND Password LIKE '$password'";
-
 
     $res_login = $conexion->query($login_query);
     if ($res_login->num_rows > 0) {
@@ -39,10 +37,8 @@ function iniciar_sesion($conexion){
         }
         header("location:../main.php");
     } else {
-        echo "<script>alert('Nombre de usuario o contraseña incorrectos');window.location='../login.html';</script>";
+        echo "<script>alert('Usuario o Contraseña incorrectos');window.location='../login.html';</script>";
     }
     $conexion->close();
 }
-
-
 ?>

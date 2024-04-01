@@ -1,15 +1,16 @@
 <?php
 
-$ip = "localhost";
-$database = "vidrios_aluminios";
-$conexion=mysqli_connect($ip, "root", "", $database);
+// $ip = "localhost";
+// $database = "vidrios_aluminios";
+// $conexion=mysqli_connect($ip, "root", "", $database);
 
-if(!$conexion){
-    echo ("error en la base de datos");
-    exit;
-}
+// if(!$conexion){
+//     echo ("error en la base de datos");
+//     exit;
+// }
 
-
+require_once 'connect.php';
+$conexion = connect_to_db();
 buscar($conexion);
 
 function buscar($conexion){
@@ -74,7 +75,10 @@ function buscar($conexion){
             //envia a la pagina donde se mostrara esta informacion
             header("location:../tracking.php");
         }
+    }else{
+        echo "<script>alert('Folio no encontrado');window.location='../rastrear.html';</script>";
     }
+    $conexion->close();
 }
 
 ?>
