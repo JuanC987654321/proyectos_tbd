@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Pedido</title>
+    <link rel="stylesheet" href="/Cliente/css/Cliente.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Detalle del Pedido</h1>
+        <p id="pedidoInfo"></p>
+        <p id="progressInfo"></p>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const folio = urlParams.get('folio');
+
+        document.getElementById('pedidoInfo').innerText = `Pedido Folio: ${folio}`;
+        document.getElementById('progressInfo').innerText = 'Progreso: 70% completado';
+
+        // Aquí podrías hacer una llamada a un servidor para obtener la información real
+    </script>
+</body>
+</html>

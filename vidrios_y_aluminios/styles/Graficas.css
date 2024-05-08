@@ -1,0 +1,15 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: right;
+    align-items: right;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+canvas {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
