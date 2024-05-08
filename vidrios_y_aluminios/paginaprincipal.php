@@ -12,82 +12,10 @@
 <body>
 
 <!-- sidebar -->
+<?php
+require_once "php/barraLateral.php";
+?>
 
-<div class="menu">
-    <ion-icon name="menu-outline"></ion-icon>
-    <ion-icon name="close-outline"></ion-icon>
-</div>
-    
-
-<div class="barra-lateral">
-    
-    <div>
-        <div class="nombre-pagina">
-            <a href="paginaprincipal.php">
-                <img id="logomini" src="images/logo.png" alt="Logo">
-            </a>
-        </div>
-    </div>
-
-    <nav class="navegacion">
-        <ul>
-            <li>
-                <a id="inbox" href="procesos.php">
-                    <ion-icon name="reload-circle-outline"></ion-icon>
-                    <span >Procesos</span>
-                </a>
-            </li>
-            <li>
-                <a href="grafica.html">
-                    <ion-icon name="stats-chart-outline"></ion-icon>
-                    <span>Gráficas</span>
-                </a>
-            </li>
-            <li>
-                <a href="ventas.html">
-                    <ion-icon name="wallet-outline"></ion-icon>
-                    <span>Ventas</span>
-                </a>
-            </li>
-            <li>
-                <a href="usuario.php">
-                    <ion-icon name="person-outline"></ion-icon>
-                    <span>Usuario</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-
-    <div>
-        <div class="linea"></div>
-
-        <div class="modo-oscuro">
-            <div class="info">
-                <ion-icon name="moon-outline"></ion-icon>
-                <span>Drak Mode</span>
-            </div>
-            <div class="switch">
-                <div class="base">
-                    <div class="circulo">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="usuario">
-            <img src="/Jhampier.jpg" alt="">
-            <div class="info-usuario">
-                <div class="nombre-email">
-                    <span class="nombre">Armando</span>
-                    <span class="email">Vidrios_aluminios@gmail.com</span>
-                </div>
-                <ion-icon name="ellipsis-vertical-outline"></ion-icon>
-            </div>
-        </div>
-    </div>
-
-</div>
 
 <main>
     <section id="contenedorfpp">
