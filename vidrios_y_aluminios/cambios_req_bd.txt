@@ -1,0 +1,2 @@
+tabla staff:
+    debe guardar los permisos a los que 

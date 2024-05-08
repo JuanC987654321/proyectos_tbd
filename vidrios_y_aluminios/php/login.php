@@ -37,7 +37,7 @@ function iniciar_sesion($conexion){
         }
         header("location:../paginaprincipal.php");
     } else {
-        echo "<script>alert('Usuario o Contraseña incorrectos');window.location='../login.html';</script>";
+        echo "<script>alert('Usuario o Contraseña incorrectos');window.location='../index.php';</script>";
     }
     $conexion->close();
 }

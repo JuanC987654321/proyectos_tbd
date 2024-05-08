@@ -1,5 +1,6 @@
 <?php
-require_once "php/s_buscar.php"
+require_once "php/s_buscar.php";
+require_once "php/auth.php";
 ?>
 
 
@@ -31,5 +32,6 @@ require_once "php/barraLateral.php";
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
 </body>
 </html>
