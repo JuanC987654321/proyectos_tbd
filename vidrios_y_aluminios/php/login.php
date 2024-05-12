@@ -7,9 +7,7 @@ iniciar_sesion($conexion);
 
 
 //ENCRIPTAR LA CONTRASEÑA TANTO AQUI COMO EN LA BASE DE DATOS
-//ESTA MADRE ESTA COMO TEXTO PLANO TODAVIA Y TIENE DIAS QUE ESTOY
-//AL TANTO DE ESO, NO SE PUEDE QUEDAR ASI, NO VOY A COMETER EL
-//MISMO ERROR 2 VECES
+//ESTA MADRE ESTA COMO TEXTO PLANO TODAVIA
 function iniciar_sesion($conexion){
     $registered_account = $_POST["registered_account"];
     $password = $_POST["password"];

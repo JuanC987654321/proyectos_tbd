@@ -17,7 +17,7 @@ function buscar_todos($condition=""){
             echo ("<ul id=\"modification-history\">");
             echo ("<li>Status: ". $fila["Status"] ."</li>");
             echo ("<li>Precio: $". $fila["Price"] ."</li>");
-            echo ("<li>Anticipo: $". $fila["Advance_payment"] ."</li>");
+            //echo ("<li>Anticipo: $". $fila["Advance_payment"] ."</li>");
             echo ("</ul>");
             echo ("</div>");
         }

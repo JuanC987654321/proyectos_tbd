@@ -14,7 +14,7 @@ echo('<div class="barra-lateral">');
     echo('<nav class="navegacion">');
         echo('<ul>');
             echo('<li>');
-                echo('<a href="rastrear.PHP">');
+                echo('<a href="rastrear.php">');
                     echo('<ion-icon name="search-outline"></ion-icon>');
                     echo('<span >Rastrear</span>');
                 echo('</a>');

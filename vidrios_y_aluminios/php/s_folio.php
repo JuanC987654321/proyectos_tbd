@@ -6,9 +6,18 @@ $conexion = connect_to_db();
 buscar($conexion);
 
 function buscar($conexion){
-    $folio = $_POST["folio"];
+    $search_field = $_POST["search_field"];
 
-    $busqueda_query = "SELECT * FROM buy WHERE folio LIKE '$folio'";
+    //si se ingresa una folio en el cuadro, dependiendo de como sean los folios se 
+    //pueden añadir comprobaciones extra como la longitud de los caracteres y asi
+    if (substr($search_field, 0 , 4) == "FOL-"){
+        // echo "<script>alert('" . substr($search_field, 0 , 4) . "');</script>";
+        $busqueda_query = "SELECT * FROM buy WHERE folio LIKE '$search_field'";
+    //si se ingresa un nombre
+    }else{
+        
+    }
+
     $res_busqueda = $conexion->query($busqueda_query);
 
     if($res_busqueda->num_rows > 0){
@@ -65,10 +74,10 @@ function buscar($conexion){
             setcookie("fullname", $fullname, time() + 3600, "/");
 
             //envia a la pagina donde se mostrara esta informacion
-            header("location:../tracking.php");
+            #header("location:../tracking.php");
         }
     }else{
-        echo "<script>alert('Folio no encontrado');window.location='../rastrear.html';</script>";
+        echo "<script>alert('Folio no encontrado');history.go(-1);</script>";
     }
     $conexion->close();
 }
