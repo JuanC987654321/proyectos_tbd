@@ -71,7 +71,6 @@ require_once "php/barraLateral.php";
 
         <form action="php/s_folio.php" method="post">
             <fieldset>
-                <!-- <legend>Edicion de pedido (de momento solo busca el pedido igual que seria buscarlo mediante la pagina de busqueda pero mas adelante podria llevar a una pagina que permita editar algunos parametros del pedido)</legend> -->
                 <div>
                     <div>
                         <label for="">Folio:</label>

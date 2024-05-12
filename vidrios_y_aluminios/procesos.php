@@ -1,5 +1,6 @@
 <?php
 require_once "php/s_buscar.php";
+require_once "php/s_status.php";
 require_once "php/auth.php";
 ?>
 
@@ -27,21 +28,30 @@ require_once "php/barraLateral.php";
 <h1>Historial de Productos</h1>
 
 <div class="top-controls">
+    <form action="php/s_folio.php" method="post">
         <div class="search-container">
-            <input type="text" id="searchField" placeholder="Buscar productos..." onkeyup="searchProducts()">
-            <button onclick="searchProducts()">Buscar</button>
+            <input required type="text" id="searchField" name="search_field" placeholder="Buscar productos...">
+            <input type="submit" value="Buscar">
         </div>
+    </form>
+    <form action="php/s_status.php" method="get">
 
         <div class="buttons-container">
-            <button onclick="filterStatus('completado')">Completado</button>
-            <button onclick="filterStatus('pendiente')">Pendiente</button>
-            <button onclick="filterStatus('finalizado')">Finalizado</button>
+            <input type="hidden" name="accion" value="buscar_por_status">
+            <input type="submit" name="status" value="En proceso">
+            <input type="submit" name="status" value="Completado">
         </div>
+    </form>
     </div>
-
-<div id="productList">
-    <?php buscar_todos(); ?>
-</div>
+    <div id="productList">
+        <?php 
+            if (isset($_GET['status'])) {
+                buscar_todos("status LIKE '" . $_GET['status'] . "'");
+            }else{
+                buscar_todos();
+            }
+        ?>
+    </div>
 </main>
 
 

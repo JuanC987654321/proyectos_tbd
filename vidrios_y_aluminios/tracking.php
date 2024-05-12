@@ -75,7 +75,6 @@
             </tr>
         </table>
         <hr>
-        todo: ponerle funcionalidad a este boton --->
         <button type="submit" name="boton" id="botonRandom">Bajar cotizacion</button>
     </div>
     <script>
