@@ -3,7 +3,6 @@ require_once "php/s_buscar.php";
 require_once "php/auth.php";
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,8 +24,24 @@ require_once "php/barraLateral.php";
 
 
 <main>
-    <h1>Historial de Productos</h1>
-    <?php buscar_todos() ?>
+<h1>Historial de Productos</h1>
+
+<div class="top-controls">
+        <div class="search-container">
+            <input type="text" id="searchField" placeholder="Buscar productos..." onkeyup="searchProducts()">
+            <button onclick="searchProducts()">Buscar</button>
+        </div>
+
+        <div class="buttons-container">
+            <button onclick="filterStatus('completado')">Completado</button>
+            <button onclick="filterStatus('pendiente')">Pendiente</button>
+            <button onclick="filterStatus('finalizado')">Finalizado</button>
+        </div>
+    </div>
+
+<div id="productList">
+    <?php buscar_todos(); ?>
+</div>
 </main>
 
 
