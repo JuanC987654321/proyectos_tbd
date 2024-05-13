@@ -23,7 +23,7 @@
 
         <fieldset>
             <label class="label">NÚMERO DE FOLIO:</label>
-            <input type="text" id="text" name="folio" required placeholder="numero de FOLIO:">
+            <input type="text" id="text" name="search_field" required placeholder="numero de FOLIO:">
             <input type="submit" value="Ingresar"> 
         </fieldset>
     </form> 
