@@ -5,6 +5,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <link rel="stylesheet" href="styles/notas.css">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vidrios y Aluminios Armando</title>
@@ -23,8 +26,20 @@ require_once "php/barraLateral.php";
 
 <main>
     <section id="contenedorfpp">
-        <img id="fondopp" src="images/fondo.png" alt="Fondo" >
-    
+    <div class="pizarra" id="pizarra">
+        <!-- Aquí se cargarán las notas dinámicamente -->
+    </div>
+    <div class="nota-form">
+        <textarea id="nuevaNota" placeholder="Escribe tu nota..."></textarea>
+    </div>
+
+    <div class="buttons">
+        <button onclick="agregarNota()">Agregar Nota</button>
+        <button onclick="guardarNotas()">Guardar Notas</button>
+        <button onclick="eliminarNotas()">Eliminar Notas Seleccionadas</button>
+    </div>
+
+<!--     
         <form action="php/insert.php" method="post">
             <fieldset>
                 <legend>Crear pedido</legend>
@@ -50,8 +65,8 @@ require_once "php/barraLateral.php";
                     </div>
 
 
-                    <!-- de momento folio es ingresado por el administrador pero 
-                    seria mejor generarlo algoritmicamente -->
+                    de momento folio es ingresado por el administrador pero 
+                    seria mejor generarlo algoritmicamente
                     <div>
                         <label for="">tabla buy:</label>
                         <input required type="text" placeholder="Folio" name="folio">
@@ -79,7 +94,7 @@ require_once "php/barraLateral.php";
                     </div>
             </fieldset>
         </form>
-    </section>
+    </section> -->
 </main>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
