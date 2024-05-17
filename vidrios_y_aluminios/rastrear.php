@@ -17,7 +17,7 @@
     ?>
 
     <main>
-    <form action="php/s_folio.php" method="post">
+    <form action="php/s_cli_folio.php" method="post">
         
         <img class="logo" src="images/logo.png" width="200" alt="Foto del logo" >
 

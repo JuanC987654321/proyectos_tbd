@@ -6,13 +6,7 @@
     <link rel="stylesheet" href="styles/Cliente.css">
     <title>Progreso de pedido</title>
 </head>
-<body>    
-        
-
-
-
-
-
+<body>
     <div class="container">
         <h1>¿Cómo va tu pedido?</h1>
         <p>Hola <?php echo $_COOKIE["fullname"] ?>!</p>
@@ -26,16 +20,6 @@
         <button onclick="bajarCotizacion()">Bajar cotización</button>
     </div>
 </body>
-
-
-
-
-
-
-
-
-
-
     <script src="js/Cliente.js"></script>
 </body>
 </html>

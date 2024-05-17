@@ -24,7 +24,7 @@ require_once "php/barraLateral.php";
 
 <main>
     <h1>Ventas de Productos Más Vendidos</h1>
-    <canvas id="salesChart" width="400" height="400"></canvas>
+    <canvas id="salesChart" width="400" height="200"></canvas>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </main>
