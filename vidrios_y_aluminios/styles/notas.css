@@ -9,7 +9,7 @@
 } */
 
 .pizarra {
-    width: 400px;
+    width: 1200px;
     height: 400px;
     overflow-y: auto;
     border: 5px solid #0c0969;
