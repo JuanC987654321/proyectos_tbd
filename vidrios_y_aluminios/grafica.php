@@ -32,7 +32,25 @@ require_once "php/barraLateral.php";
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="js/script.js"></script>
-<script src="js/Graficas.js"></script>
+
+<?php
+    echo "<script src='js/Graficas.js'></script>"
+?>
+
+<script type="text/javascript">
+        // Llamar a la función JavaScript pasando los datos desde PHP
+        // aqui cambiar los numeros por lo que se lea de la base de datos
+        document.addEventListener("DOMContentLoaded", function() {
+            dibujarGrafica(
+                <?php echo rand(0, 120); ?>,
+                <?php echo rand(0, 80); ?>,
+                <?php echo rand(0, 30); ?>,
+                <?php echo rand(0, 10); ?>,
+                <?php echo rand(0, 5); ?>
+            );
+        });
+    </script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
