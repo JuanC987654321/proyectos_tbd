@@ -1,15 +1,32 @@
 // script.js
 // document.addEventListener('DOMContentLoaded', function() {
 //dibujarGrafica(60, 30, 20, 10, 5);
-function dibujarGrafica(cinco, cuatro, tres, dos, una,){
+
+async function fetchRatings() {
+    try {
+        const response = await fetch('./php/cargar_calif.php');
+        const data = await response.json();
+        console.log('Datos recibidos:', data); // Añade este log
+        return data;
+    } catch (error) {
+        console.error('Error fetching ratings:', error);
+    }
+}
+
+async function dibujarGrafica() {
+    const data = await fetchRatings();
+    if (!data) return;
+
+    console.log('Datos para la gráfica:', data); // Añade este log
+    
     const ctx = document.getElementById('salesChart').getContext('2d');
     const salesChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['5 Estrella', '4 Estrellas', '3 Estrellas', '2 Estrellas', '1 Estrellas'],
+            labels: ['5 Estrellas', '4 Estrellas', '3 Estrellas', '2 Estrellas', '1 Estrella'],
             datasets: [{
-                label: 'Servicios con esta calificacion',
-                data: [cinco, cuatro, tres, dos, una],
+                label: '',
+                data: [data.cinco, data.cuatro, data.tres, data.dos, data.una],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -35,6 +52,7 @@ function dibujarGrafica(cinco, cuatro, tres, dos, una,){
             }
         }
     });
-// });
-};
+}
 
+// Llamar a la función para dibujar la gráfica
+dibujarGrafica();

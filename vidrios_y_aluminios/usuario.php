@@ -31,8 +31,14 @@ require_once "php/barraLateral.php";
     <label for="employeeName">Nombre:</label>
     <input type="text" id="employeeName" name="employeeName" required>
 
-    <label for="employeeEmail">Email:</label>
-    <input type="email" id="employeeEmail" name="employeeEmail" required>
+    <label for="employeeLastName">Apellido:</label>
+    <input type="text" id="employeeLastName" name="employeeLastName" required>
+
+    <label for="employeeUsername">Nombre de usuario:</label>
+    <input type="text" id="employeeUsername" name="employeeUsername" required>
+
+    <label for="employeePassword">Contraseña:</label>
+    <input type="text" id="employeePassword" name="employeePassword" required>
 
     <button type="button" onclick="createEmployee()">Crear Empleado</button>
     <button type="button" onclick="updateEmployee()">Actualizar Empleado</button>

@@ -12,9 +12,6 @@
 
 </head>
 <body>
-    <?php
-        require_once "php/barraLateral.php";
-    ?>
 
     <main>
     <form action="php/s_cli_folio.php" method="post">

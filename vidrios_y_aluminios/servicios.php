@@ -47,17 +47,17 @@ require_once "php/barraLateral.php";
     <div id="productList">
         <?php 
             if (isset($_GET['status'])) {
-                buscar_todos("'Order status' LIKE '" . $_GET['status'] . "'");
+                // buscar_todos("'Order status' LIKE '" . $_GET['status'] . "'");
+                buscar_con_status("OrderStatus = '" . $_GET['status'] . "'");
             }
 
-            //todo (continuacion de s_trab_serv.php)
-            //todo y aqui poner otro else if para ya sea el folio o el nombre
-            //todo reemplazar con ese el de search_param
             else if(isset($_GET['folio'])){
-                buscar_todos("folio LIKE '" . $_GET['folio'] . "'");
+                // buscar_todos("process", "client", "Folio LIKE '" . $_GET['folio'] . "'");
+                buscar_con_folio();
             }
             else if (isset($_GET['nombre'])){
-                buscar_todos("nombre");
+                // buscar_todos("client", "process", "nombre LIKE '" . $_GET['nombre'] . "'");
+                buscar_con_nombre("nombre = '" . $_GET['nombre'] . "'");
             }
              else {
                 buscar_todos();
