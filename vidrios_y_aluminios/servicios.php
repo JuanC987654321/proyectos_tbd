@@ -53,7 +53,7 @@ require_once "php/barraLateral.php";
 
             else if(isset($_GET['folio'])){
                 // buscar_todos("process", "client", "Folio LIKE '" . $_GET['folio'] . "'");
-                buscar_con_folio();
+                buscar_con_folio("Folio = '" . $_GET['folio'] . "'");
             }
             else if (isset($_GET['nombre'])){
                 // buscar_todos("client", "process", "nombre LIKE '" . $_GET['nombre'] . "'");
@@ -75,11 +75,16 @@ require_once "php/barraLateral.php";
                 <label for="nombreCliente">Nombre del Cliente:</label>
                 <input type="text" id="nombreCliente" name="nombre_cliente" required><br>
             </div>
-            
+
+            <div>
+                <label for="numeroCliente">Numero del Cliente:</label>
+                <input type="text" id="numeroCliente" name="numero_cliente" required><br>
+            </div>
+<!--             
             <div>
                 <label for="folioTicket">Folio del Ticket:</label>
                 <input type="text" id="folioTicket" name="folio_ticket" required><br>
-            </div>
+            </div> -->
 
             <div>
                 <label for="fecha">Fecha:</label>

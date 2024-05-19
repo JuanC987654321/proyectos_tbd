@@ -68,6 +68,7 @@ require_once "php/barraLateral.php";
 
 <div id="employeeList">
     <!-- Lista de empleados se cargará aquí -->
+    asd 
 </div>
 </main>
 

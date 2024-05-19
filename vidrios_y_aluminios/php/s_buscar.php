@@ -27,7 +27,7 @@ function buscar_con_nombre($condition){
     }
 }
 
-function buscar_con_folio(){
+function buscar_con_folio($condition){
     $conexion = connect_to_db();
     $busqueda_query = "SELECT * FROM process WHERE " . $condition;
     
