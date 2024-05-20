@@ -41,11 +41,11 @@ require_once "php/barraLateral.php";
     <input type="text" id="employeePassword" name="employeePassword" required>
 
     <button type="button" onclick="createEmployee()">Crear Empleado</button>
-    <button type="button" onclick="updateEmployee()">Actualizar Empleado</button>
-    <button type="button" onclick="deleteEmployee()">Eliminar Empleado</button>
+    <!-- <button type="button" onclick="updateEmployee()">Actualizar Empleado</button> -->
+    <!-- <button type="button" onclick="deleteEmployee()">Eliminar Empleado</button> -->
 </form>
 
-<h2>Permisos</h2>
+<!-- <h2>Permisos</h2>
 <form id="permissionsForm">
     <div>
         <input type="checkbox" id="dashboard" name="dashboard">
@@ -64,11 +64,37 @@ require_once "php/barraLateral.php";
         <label for="reports">Usuario</label>
     </div>
     <button type="button" onclick="updatePermissions()">Actualizar Permisos</button>
-</form>
+</form> -->
 
 <div id="employeeList">
     <!-- Lista de empleados se cargará aquí -->
-    asd 
+    Nombre de una persona aqui 
+    <select name="rol" id="rol">
+        <option value="Administrador">Administrador</option>
+        <option value="Empleado">Empleado</option>
+    </select>
+    <button>Aceptar</button>
+    <button>Eliminar Empleado</button>
+    <br>
+    <br>
+    <br>
+    Nombre de otra persona aqui
+    <select name="rol" id="rol">
+        <option value="Administrador">Administrador</option>
+        <option value="Empleado">Empleado</option>
+    </select>
+    <button>Aceptar</button>
+    <button>Eliminar Empleado</button>
+    <br>
+    <br>
+    <br>
+    Alguien mas va aqui y tambien tiene un nombre
+    <select name="rol" id="rol">
+        <option value="Administrador">Administrador</option>
+        <option value="Empleado">Empleado</option>
+    </select>
+    <button>Aceptar</button>
+    <button>Eliminar Empleado</button>
 </div>
 </main>
 

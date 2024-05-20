@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
+    <title>Rastrear Servicio</title>
     <link href="styles/style.css" rel="stylesheet">
     <link href="styles/rastrear.css" rel="stylesheet">
     <link href="styles/normalize.css" rel="stylesheet">

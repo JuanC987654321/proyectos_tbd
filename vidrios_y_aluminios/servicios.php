@@ -70,7 +70,7 @@ require_once "php/barraLateral.php";
 <div id="modal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <form action="tu_script_php.php" method="post">
+        <form action="php/insert.php" method="post">
             <div>
                 <label for="nombreCliente">Nombre del Cliente:</label>
                 <input type="text" id="nombreCliente" name="nombre_cliente" required><br>
@@ -80,7 +80,8 @@ require_once "php/barraLateral.php";
                 <label for="numeroCliente">Numero del Cliente:</label>
                 <input type="text" id="numeroCliente" name="numero_cliente" required><br>
             </div>
-<!--             
+            
+            <!--             
             <div>
                 <label for="folioTicket">Folio del Ticket:</label>
                 <input type="text" id="folioTicket" name="folio_ticket" required><br>

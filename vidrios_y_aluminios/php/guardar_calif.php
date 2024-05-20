@@ -11,19 +11,19 @@ function calificar(){
     $column = "";
     switch ($rating) {
         case 1:
-            $column = "1star";
+            $column = "una";
             break;
         case 2:
-            $column = "2star";
+            $column = "dos";
             break;
         case 3:
-            $column = "3star";
+            $column = "tres";
             break;
         case 4:
-            $column = "4star";
+            $column = "cuatro";
             break;
         case 5:
-            $column = "5star";
+            $column = "cinco";
             break;
         default:
             echo "Calificación inválida";
@@ -36,7 +36,7 @@ function calificar(){
 
     $conexion->query($query);
     $conexion->close();
-    echo "<script>alert('Calificacion enviada con exito');window.location='index.php';</script>";
+    echo "<script>alert('Calificacion enviada con exito');history.go(-1);</script>";
 
     // echo ($_POST["rating"]);
 }

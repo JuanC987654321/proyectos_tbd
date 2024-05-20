@@ -1,5 +1,5 @@
 <?php
-// require_once "php/auth.php";
+require_once "php/auth.php";
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vidrios y Aluminios Armando</title>
     <link href="styles/style.css" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
@@ -24,20 +27,20 @@ require_once "php/barraLateral.php";
 
 
 <main>
-    <section id="contenedorfpp">
-    <div class="pizarra" id="pizarra"  width="400">
+    <!-- <section id="contenedorfpp"> -->
+    <div class="pizarra" id="pizarra">
         <!-- Aquí se cargarán las notas dinámicamente -->
     </div>
     <div class="nota-form">
         <textarea id="nuevaNota" placeholder="Escribe tu nota..."></textarea>
+        <input type="color" id="colorNota" value="#ff0000"> <!-- Agregar input para seleccionar el color -->
+        
     </div>
 
     <div class="buttons">
         <button onclick="agregarNota()">Agregar Nota</button>
-        <!--<button onclick="guardarNotas()">Guardar Notas</button>-->
-        <button onclick="eliminarNotas()">Eliminar Notas Seleccionadas</button>
+        <button onclick="eliminarNotasSeleccionadas()">Eliminar Notas Seleccionadas</button>
     </div>
-
 
 </main>
 

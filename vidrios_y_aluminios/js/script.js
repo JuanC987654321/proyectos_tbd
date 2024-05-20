@@ -7,6 +7,11 @@ const circulo = document.querySelector(".circulo");
 const menu = document.querySelector(".menu");
 const main = document.querySelector("main");
 
+
+$(document).ready(function() {
+    $(".pizarra").sortable(); // Hacer la pizarra ordenable
+});
+
 menu.addEventListener("click",()=>{
     barraLateral.classList.toggle("max-barra-lateral");
     if(barraLateral.classList.contains("max-barra-lateral")){
@@ -82,72 +87,92 @@ function mostrarProductos(productos) {
     });
 }
 
-
-// Función para agregar una nueva nota
-// Variable global para almacenar las notas seleccionadas
-let notasSeleccionadas = [];
+let notasSeleccionadas = new Set(); // Set para almacenar las notas seleccionadas
 
 // Función para agregar una nueva nota
 function agregarNota() {
-    const notaTexto = document.getElementById('nuevaNota').value;
-    if (notaTexto.trim() !== '') {
+    const nuevaNotaText = document.getElementById('nuevaNota').value.trim();
+    const colorNota = document.getElementById('colorNota').value; // Obtener el color seleccionado
+
+    if (nuevaNotaText !== '') {
+        const nuevaNotaElement = document.createElement('div');
+        nuevaNotaElement.classList.add('nota');
+        nuevaNotaElement.style.backgroundColor = colorNota; // Establecer el color de fondo de la nota
+
+        // Crear checkbox para seleccionar la nota
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.addEventListener('change', () => actualizarSeleccion(nuevaNotaElement)); // Asociar evento de cambio
+        nuevaNotaElement.appendChild(checkbox); // Agregar checkbox a la nota
+
+        // Crear elemento para la fecha y hora
+        const fechaHoraElement = document.createElement('div');
+        fechaHoraElement.textContent = obtenerFechaHoraActual();
+        fechaHoraElement.classList.add('fecha-hora');
+        nuevaNotaElement.appendChild(fechaHoraElement); // Agregar fecha y hora al inicio de la nota
+
+        // Crear elemento para el texto principal de la nota
+        const textoNotaElement = document.createElement('div');
+        textoNotaElement.textContent = nuevaNotaText;
+        nuevaNotaElement.appendChild(textoNotaElement); // Agregar texto principal de la nota
+
         const pizarra = document.getElementById('pizarra');
+        pizarra.appendChild(nuevaNotaElement);
 
-        // Crear un nuevo elemento div para la nota
-        const nuevaNota = document.createElement('div');
-        nuevaNota.className = 'nota';
-        nuevaNota.textContent = notaTexto;
-
-        // Agregar atributo para seleccionar nota
-        nuevaNota.setAttribute('onclick', 'seleccionarNota(this)');
-
-        // Agregar la nueva nota a la pizarra
-        pizarra.appendChild(nuevaNota);
-
-        // Limpiar el campo de texto
+        // Limpiar el textarea después de agregar la nota
         document.getElementById('nuevaNota').value = '';
+    } else {
+        alert('Por favor, escribe algo en la nota antes de guardar.');
     }
 }
 
-// Función para seleccionar/deseleccionar una nota
-function seleccionarNota(nota) {
-    nota.classList.toggle('seleccionada');
-    const notaTexto = nota.textContent;
 
-    // Agregar o quitar la nota de la lista de notas seleccionadas
-    if (notasSeleccionadas.includes(notaTexto)) {
-        notasSeleccionadas = notasSeleccionadas.filter(n => n !== notaTexto);
+
+
+// Función para actualizar la selección de las notas
+function actualizarSeleccion(notaElement) {
+    const checkbox = notaElement.querySelector('input[type="checkbox"]');
+    if (checkbox.checked) {
+        notaElement.classList.add('seleccionada');
     } else {
-        notasSeleccionadas.push(notaTexto);
+        notaElement.classList.remove('seleccionada');
     }
+}
+
+
+// Función para obtener la fecha y hora actual en un formato legible
+function obtenerFechaHoraActual() {
+    const ahora = new Date();
+    const options = {
+        year: 'numeric', month: 'numeric', day: 'numeric',
+        hour: 'numeric', minute: 'numeric', second: 'numeric'
+    };
+    return ahora.toLocaleString('es-ES', options);
 }
 
 // Función para eliminar notas seleccionadas
-function eliminarNotas() {
-    const pizarra = document.getElementById('pizarra');
-    pizarra.querySelectorAll('.seleccionada').forEach(nota => {
-        nota.remove();
-    });
-    notasSeleccionadas = [];
+function eliminarNotasSeleccionadas() {
+    const notasSeleccionadas = document.querySelectorAll('.nota.seleccionada');
+    if (notasSeleccionadas.length > 0) {
+        const confirmacion = confirm('Estimado(a) usuario(a), ¿está seguro(a) de eliminar estas notas? Verifique por favor');
+        if (confirmacion) {
+            notasSeleccionadas.forEach((nota) => {
+                nota.remove();
+            });
+        }
+    } else {
+        alert('No hay notas seleccionadas para eliminar.');
+    }
 }
 
-// Función para guardar las notas en la base de datos
-function guardarNotas() {
-    const notas = [];
-    document.querySelectorAll('.nota').forEach(nota => {
-        notas.push(nota.textContent);
-    });
+// Función para guardar la nota en una base de datos (simulado)
+function guardarNotaEnBaseDeDatos(nota) {
+    console.log('Guardando nota en la base de datos:', nota);
+    // Aquí podrías implementar el código para guardar la nota en tu base de datos
+}
 
-    // Enviar las notas al servidor utilizando una solicitud AJAX
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'guardar_notas.php');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            alert('Notas guardadas correctamente');
-        } else {
-            alert('Error al guardar las notas');
-        }
-    };
-    xhr.send(JSON.stringify(notas));
+// Función para simular la eliminación de una nota en la base de datos
+function eliminarNotaDeBaseDeDatos(nota) {
+    console.log('Eliminando nota de la base de datos:', nota);
+    // Aquí podrías implementar el código para eliminar la nota de tu base de datos
 }

@@ -9,20 +9,44 @@
 } */
 
 .pizarra {
-    width: 1200px;
-    height: 400px;
+    width:1100px;
+    height: 550px;
     overflow-y: auto;
     border: 5px solid #0c0969;
     padding: 10px;
-    background-color: #8c90bc;
     margin-bottom: 20px;
 }
 
 .nota {
+    width: 250px;
+    height: 250px;
+    margin-right: 10px; /* Espacio entre cada nota */
     margin-bottom: 10px;
-    padding: 20px;
-    border: 3px solid #f4f81f;
-    background-color: #f9f9f9;
+    padding: 10px;
+    background-color: #dedca8;
+    border: 4px solid #eaea0d;
+    border-radius: 5px;
+    box-sizing: border-box; /* Incluir el borde y el relleno en el tamaño total */
+    display: inline-block; /* Mostrar las notas en línea (una al lado de la otra) */
+    vertical-align: top; /* Alinear las notas en la parte superior */
+    cursor: pointer; /* Cambiar el cursor a mano al pasar sobre las notas */
+    overflow: auto; /* Agregar desplazamiento si el contenido es demasiado largo */
+    word-wrap: break-word; /* Dividir palabras largas */
+}
+
+/* Estilos para el contenido de las notas */
+.nota-content {
+    width: 100%; /* Ajustar el ancho al 100% del contenedor */
+    height: 100%; /* Ajustar la altura al 100% del contenedor */
+    overflow: hidden; /* Ocultar el desbordamiento del contenido */
+    text-overflow: ellipsis; /* Agregar puntos suspensivos (...) si el texto es demasiado largo */
+    white-space: nowrap; /* Evitar saltos de línea */
+}
+
+.fecha-hora {
+    font-size: 12px;
+    color: #000000;
+    margin-top: 5px;
 }
 
 .nota-form {
@@ -41,8 +65,9 @@ textarea {
 
 button {
     padding: 8px 16px;
-    
-    background-color: #007bff;
+    background-color: #575c62;
+    margin-inline-start: 10px;
+    display: inline-block;
     color: #fff;
     border: none;
     cursor: pointer;

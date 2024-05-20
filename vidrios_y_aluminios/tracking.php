@@ -1,3 +1,7 @@
+<?php
+require_once "php/get_datetime_from_folio.php"
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,13 +20,15 @@
         <p>Hola <?php echo $_COOKIE["nombre"] ?>!</p>
         <p><strong>Estado:</strong> <?php echo $_COOKIE["OrderStatus"] ?></p>
         <p><strong>Folio:</strong> <span id="folio"><?php echo $_COOKIE["folio"] ?></span></p>
-        <p><strong>Fecha del Pedido:</strong> <span id="fechaPedido"></span></p>
+        <p><strong>Fecha del Pedido:</strong> <span id="fechaPedido"><?php echo convertirFechaHora($_COOKIE["folio"]) ?></span></p>
         <!-- <div class="progress">
             <div class="progress-bar">50%</div>
         </div> -->
         <img src="ruta_a_tu_imagen.jpg" alt="Imagen de tu pedido" style="max-width: 100%; margin-top: 20px;">
         <br>
         calificacion
+
+        (que esto solo aparezca si OrderStatus en la tabla process es Completado)
         <form action="php/guardar_calif.php" method="post">
             <div>
                 <input type="submit" name="rating" value="1">⭐</input>
