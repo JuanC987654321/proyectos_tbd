@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -23,26 +24,25 @@ table {
 }
 th, td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 12px;
     text-align: left;
 }
 th {
-    background-color: #ffcc00; /* Amarillo */
+    background-color: #ffcc00;
     color: #333;
 }
 tr:nth-child(even) {
-    background-color: #e8e5e5; /* gris claro */
+    background-color: #e8e5e5;
 }
 tr:nth-child(odd) {
-    background-color: #ffffcc; /* Amarillo claro */
+    background-color: #def1898d;
 }
 button {
-    display: block;
-    width: 150px;
-    margin: 20px auto;
+    width: 200px;
+    margin: 20px 10px;
     padding: 10px;
     font-size: 16px;
-    background-color: #1501cc;; 
+    background-color: #1501cc;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -50,7 +50,7 @@ button {
     transition: background-color 0.3s ease;
 }
 button:hover {
-    background-color: #2b11d2; /* Verde oscuro */
+    background-color: #2b11d2;
 }
 .progress {
     width: 100%;
@@ -60,10 +60,34 @@ button:hover {
     overflow: hidden;
 }
 .progress-bar {
-    width: 50%; /* Valor */
-    background-color: #ffcc00; 
+    width: 50%;
+    background-color: #ffcc00;
     height: 30px;
     line-height: 30px;
     text-align: center;
     color: #fff;
+}
+.star-rating {
+    direction: rtl;
+    display: inline-flex;
+    font-size: 2em;
+    margin-top: 20px;
+}
+
+.star-rating input[type="radio"] {
+    display: none;
+}
+
+.star-rating label {
+    color: #ddd;
+    cursor: pointer;
+}
+
+.star-rating input[type="radio"]:checked ~ label {
+    color: #f5b301;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #f5b301;
 }

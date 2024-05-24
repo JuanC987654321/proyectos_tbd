@@ -27,6 +27,7 @@ label {
 }
 
 input[type="text"],
+input[type="password"],
 input[type="email"] {
     width: 100%;
     padding: 8px;
@@ -44,6 +45,14 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s;
+}
+
+button#Eliminar {
+    background-color: #ff0000;
+}
+
+button#Eliminar:hover {
+    background-color: #a10000;
 }
 
 button:hover {
