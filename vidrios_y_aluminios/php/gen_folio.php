@@ -1,15 +1,11 @@
 <?php
-
-// echo "Today is " . date("Y/m/d") . "<br>";
-// echo "Today is " . date("Y.m.d") . "<br>";
-// echo "Today is " . date("Y-m-d") . "<br>";
-// echo "en el folio ira '" . date("00006-dmy-His") . "'";
-// echo "Today is " . date("l");
 date_default_timezone_set('America/Mexico_City');
 
 
 require_once "connect.php";
 $conexion = connect_to_db();
+
+// get_folio();
 
 function get_folio(){
     global $conexion;

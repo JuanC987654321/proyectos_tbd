@@ -1,4 +1,6 @@
 <?php
+// session_start();
+
 echo('<div class="menu">');
     echo('<ion-icon name="menu-outline"></ion-icon>');
     echo('<ion-icon name="close-outline"></ion-icon>');
@@ -20,6 +22,12 @@ echo('<div class="barra-lateral">');
             //     echo('</a>');
             // echo('</li>');
             echo('<li>');
+                echo('<a href="paginaprincipal.php">');
+                    echo('<ion-icon name="home-outline"></ion-icon>');
+                    echo('<span >Pagina Principal</span>');
+                echo('</a>');
+            echo('</li>');
+            echo('<li>');
                 echo('<a href="servicios.php">');
                     echo('<ion-icon name="reload-circle-outline"></ion-icon>');
                     echo('<span >Servicios</span>');
@@ -31,18 +39,24 @@ echo('<div class="barra-lateral">');
                     echo('<span>Gráficas</span>');
                 echo('</a>');
             echo('</li>');
-            /*echo('<li>');
-                echo('<a href="ventas.php">');
-                    echo('<ion-icon name="wallet-outline"></ion-icon>');
-                    echo('<span>Ventas</span>');
-                echo('</a>');
-            echo('</li>');*/
-            echo('<li>');
-                echo('<a href="usuario.php">');
-                    echo('<ion-icon name="person-outline"></ion-icon>');
-                    echo('<span>Usuario</span>');
-                echo('</a>');
-            echo('</li>');
+
+            //attention mostrar solo si el rol es de Administrador
+            if($_SESSION["Role"] == "Administrador"){
+                /*echo('<li>');
+                    echo('<a href="ventas.php">');
+                        echo('<ion-icon name="wallet-outline"></ion-icon>');
+                        echo('<span>Ventas</span>');
+                    echo('</a>');
+                echo('</li>');*/
+                echo('<li>');
+                    echo('<a href="usuario.php">');
+                        echo('<ion-icon name="person-outline"></ion-icon>');
+                        echo('<span>Usuario</span>');
+                    echo('</a>');
+                echo('</li>');
+                //attention mostrar solo si el rol es de Administrador
+            }
+
             echo('<li>');
             echo('<a href="php/logout.php">');
                 echo('<ion-icon name="log-out-outline"></ion-icon>');
@@ -53,18 +67,18 @@ echo('<div class="barra-lateral">');
     echo('</nav>');
     echo('<div>');
         echo('<div class="linea"></div>');
-        echo('<div class="modo-oscuro">');
-            echo('<div class="info">');
-                echo('<ion-icon name="moon-outline"></ion-icon>');
-                echo('<span>Dark Mode</span>');
-            echo('</div>');
-            echo('<div class="switch">');
-                echo('<div class="base">');
-                    echo('<div class="circulo">');
-                    echo('</div>');
-                echo('</div>');
-            echo('</div>');
-        echo('</div>');
+        // echo('<div class="modo-oscuro">');
+        //     echo('<div class="info">');
+        //         echo('<ion-icon name="moon-outline"></ion-icon>');
+        //         echo('<span>Dark Mode</span>');
+        //     echo('</div>');
+        //     echo('<div class="switch">');
+        //         echo('<div class="base">');
+        //             echo('<div class="circulo">');
+        //             echo('</div>');
+        //         echo('</div>');
+        //     echo('</div>');
+        // echo('</div>');
         echo('<div class="usuario">');
             echo('<img src="/Jhampier.jpg" alt="">');
             echo('<div class="info-usuario">');

@@ -11,10 +11,6 @@ function buscar_por_status($param){
 }
 
 function buscar_por_folio_o_nombre($param){
-    //todo aqui definir si se ingreso un folio o un nombre y dependiendo de eso
-    //todo realizar una busqueda por folio o una busqueda por nombre, 
-    //todo search_param debe de ser ya sea folio o nombre 
-    //todo (continua en servicios.php)
     $pattern = '/^\d{5}-\d{6}-\d{6}$/';
     
     // Validar el folio con la expresión regular

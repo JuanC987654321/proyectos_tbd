@@ -1,29 +1,58 @@
 <?php
 
 require_once "connect.php";
-
-// Obtener las notas enviadas desde la solicitud AJAX
-$data = json_decode(file_get_contents('php://input'), true);
-
 $conexion = connect_to_db();
 
-// Verificar la conexión
-if ($conexion->connect_error) {
-    die("Error en la conexión a la base de datos: " . $conexion->connect_error);
+function redirect($url) {
+    header('Location: ' . $url);
+    exit();
 }
 
-// Eliminar todas las notas existentes en la base de datos
-$conexion->query("DELETE FROM notas");
-
-// Insertar las nuevas notas en la base de datos
-foreach ($data as $nota) {
-    $nota = $conexion->real_escape_string($nota);
-    $conexion->query("INSERT INTO notas (texto) VALUES ('$nota')");
+// Agregar nota
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nota"])) {
+    $nota = trim($_POST["nota"]);
+    $color = isset($_POST["color"]) ? $_POST["color"] : '#ffffff';
+    if (empty($nota)) {
+        echo "<script>alert('Por favor, ingrese una nota.');</script>";
+    } else {
+        $nota = $conexion->real_escape_string($nota);
+        $color = $conexion->real_escape_string($color);
+        $sql = "INSERT INTO notas (contenido, color) VALUES ('$nota', '$color')";
+        if ($conexion->query($sql) === TRUE) {
+            redirect($_SERVER['PHP_SELF']); // Redirecciona para evitar reenvío del formulario
+        } else {
+            echo "Error: " . $sql . "<br>" . $conexion->error;
+        }
+    }
 }
 
-// Cerrar la conexión
-$conexion->close();
+// Eliminar notas seleccionadas
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete_selected"])) {
+    if (isset($_POST["selected_notas"])) {
+        $ids = implode(",", array_map('intval', $_POST["selected_notas"]));
+        $sql = "DELETE FROM notas WHERE id IN ($ids)";
+        if ($conexion->query($sql) === TRUE) {
+            redirect($_SERVER['PHP_SELF']); // Redirecciona para evitar reenvío del formulario
+        } else {
+            echo "Error: " . $conexion->error;
+        }
+    }
+}
 
-// Responder con un código de éxito
-http_response_code(200);
+// Actualizar orden de notas
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update_order"])) {
+    $order = $_POST["order"];
+    foreach ($order as $position => $id) {
+        $id = intval($id);
+        $position = intval($position);
+        $sql = "UPDATE notas SET orden = $position WHERE id = $id";
+        $conexion->query($sql);
+    }
+    echo "Orden actualizado";
+    exit();
+}
+
+// Obtener todas las notas
+$sql = "SELECT * FROM notas ORDER BY orden ASC, fecha DESC";
+$result = $conexion->query($sql);
 ?>

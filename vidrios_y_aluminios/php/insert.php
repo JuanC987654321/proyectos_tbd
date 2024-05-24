@@ -1,6 +1,5 @@
 <?php
 
-
 require_once "gen_folio.php";
 require_once "connect.php";
 $conexion = connect_to_db();
@@ -30,73 +29,45 @@ function select_or_insert_client(){
     }
 }
 
-//2
-// function insert_product(){
-//     global $conexion;
-//     $material = $_POST["material"];
-//     $color = $_POST["color"];
-//     $type = $_POST["type"];
-//     $description = $_POST["description"];
-//     $length = $_POST["length"];
-//     $width = $_POST["width"];
 
-//     $query = "INSERT INTO product (Material, Color, Type, Description, Length, Width)
-//     VALUES ('$material', '$color', '$type', '$description', '$length', '$width')";
+function insert_sales_history($id_process){
+    global $conexion;
+    $precio = $_POST["precio"];
+    $abono = $_POST["abono"];
 
-//     $conexion->query($query);
-//     return mysqli_insert_id($conexion);
-// }
+    $query = "INSERT INTO sales_history (precio_total, abonado, id_process) VALUES ('$precio', '$abono', '$id_process')";
+    $res = $conexion->query($query);
+    return [$precio, $abono];
+}
 
 
 //3
 function insert_process($id_client){
     global $conexion;
-    // $folio = $_POST["folio"];
-    //el folio se debe generar automaticamente, ya hay un archivo php que medio hace eso
-    //solo necesito saber cuantos ya han sido generados
     $folio = get_folio();
     $fecha = $_POST["fecha"];
     $status = "En proceso";
 
     $query = "INSERT INTO process (Folio, OrderStatus, Id_client)
     VALUES ('$folio', '$status', '$id_client')";
-
-    // $query2 = "INSERT INTO "
     
     $conexion->query($query);
-    return $folio;
+    return [mysqli_insert_id($conexion), $folio];
 }
-
-//4
-// function insert_price_quote($id_customer, $id_product, $id_staff){
-//     session_start();
-    
-//     global $conexion;
-//     $quoation_date = date("Y-m-d");
-//     $price = $_POST["price"];
-//     $id_staff = $_SESSION["id_staff"];
-
-//     $query = "INSERT INTO price_quote (Quotation_date, Price, Id_customer, Id_product, Id_staff)
-//     VALUES ('$quoation_date', '$price', '$id_customer', '$id_product', '$id_staff')";
-    
-//     $conexion->query($query);
-// }
-
-
-//main
-// function insert_all_tables(){
-//     $new_product_id = insert_product();
-//     $new_customer_id = insert_customer();
-//     insert_buy($new_product_id, $new_customer_id);
-//     insert_price_quote($new_customer_id, $new_product_id, $_SESSION["id_staff"]);
-//     echo ("<script>alert('Orden creada con exito :D');window.location='../main.php';</script>");
-// }
 
 
 function create_new_process(){
     $client_info = select_or_insert_client();
-    $folio_creado = insert_process($client_info[0]);
-    echo ("<script>alert('Orden creada con exito :D\\nNombre del cliente: " . $client_info[1] . "\\nFolio: " . $folio_creado . "');history.go(-1);</script>");
+    $process_info = insert_process($client_info[0]);
+    $precio_abono = insert_sales_history($process_info[0]);
+    echo "<script>
+        alert('Orden creada con éxito\\n" .
+        "Nombre del cliente: " . $client_info[1] . "\\n" .
+        "Folio: " . $process_info[1] . "\\n" .
+        "Precio: $" . $precio_abono[0] . "\\n" .
+        "Abono: $" . $precio_abono[1] . "');
+        history.go(-1);
+    </script>";
 }
 
 ?>
