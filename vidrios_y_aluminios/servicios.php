@@ -2,6 +2,7 @@
 require_once "php/s_buscar.php";
 require_once "php/s_trab_serv.php";
 require_once "php/auth.php";
+check_is_rol(["Empleado", "Administrador"]);
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +13,7 @@ require_once "php/auth.php";
     <title>Servicios</title>
     <link href="styles/servicios.css" rel="stylesheet">
     <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/sidebar.css" rel="stylesheet">
     <link href="styles/normalize.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -66,6 +68,66 @@ require_once "php/barraLateral.php";
     </div>
 </main>
 
+
+
+<!-- MODAL INFO -->
+<!-- Modal -->
+<div id="modalInfo" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div>
+            <label for="nombreCliente">Nombre del Cliente: Eduadro</label>
+        </div>
+
+        <div>
+            <label for="folio">Folio:12345-123456-123456</label>
+        </div>
+
+        <div>
+            <label for="numeroCliente">Numero del Cliente: 8</label>
+        </div>
+
+        <div>
+            <label for="precio">Precio: $2500</label>
+        </div>
+
+        <div>
+            <label for="abono">Abonado: $2000</label>
+        </div>
+        <hr>
+
+        <form action="" method="post">
+            <div>
+                <label for="abono">Editar precio:</label>
+                <input type="number" step=0.01 id="abono" name="abono" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Aceptar</button>
+            <br><br>
+        </form>
+
+        <form action="" method="post">
+            <div>
+                <label for="abono">Abonar:</label>
+                <input type="number" step=0.01 id="abono" name="abono" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Aceptar</button>
+            <br><br>
+        </form>
+
+        <form action="" method="post">
+            <div>
+                <Label for="estado">Estado del pedido:</Label>
+                <select name="rol" id="rol">
+                    <option value="En proceso">En proceso</option>
+                    <option value="Completado">Completado</option>
+                </select>
+                <br><br><br>
+            </div>            
+            <button type="submit" class="btn btn-primary">Aceptar</button>
+        </form>
+    </div>
+</div>
+
 <!-- Modal -->
 <div id="modal" class="modal">
     <div class="modal-content">
@@ -80,12 +142,16 @@ require_once "php/barraLateral.php";
                 <label for="numeroCliente">Numero del Cliente:</label>
                 <input type="text" id="numeroCliente" name="numero_cliente" required><br>
             </div>
-            
-            <!--             
+
             <div>
-                <label for="folioTicket">Folio del Ticket:</label>
-                <input type="text" id="folioTicket" name="folio_ticket" required><br>
-            </div> -->
+                <label for="precio">Precio:</label>
+                <input type="number" step=0.01 id="precio" name="precio" required><br>
+            </div>
+
+            <div>
+                <label for="abono">Abono:</label>
+                <input type="number" step=0.01 id="abono" name="abono" required><br>
+            </div>
 
             <div>
                 <label for="fecha">Fecha:</label>
@@ -103,6 +169,14 @@ require_once "php/barraLateral.php";
 </div>
 
 <script>
+    function abrirModalInfo(){
+        document.getElementById("modalInfo").style.display = "block";
+    }
+
+    function cerrarModalInfo(){
+        document.getElementById("modalInfo").style.display = "none";
+    }
+
     // Función para abrir el modal
     function abrirModal() {
         document.getElementById('modal').style.display = 'block';
@@ -117,7 +191,12 @@ require_once "php/barraLateral.php";
     document.getElementById('ingresarBtn').addEventListener('click', abrirModal);
 
     // Agregar event listener para cerrar el modal cuando se hace clic en el botón de cerrar
-    document.getElementsByClassName('close')[0].addEventListener('click', cerrarModal);
+    var closeButtons = document.getElementsByClassName('close');
+    // Itera sobre todos los elementos y añade el evento 'click' con la función cerrarModal
+    for (var i = 0; i < closeButtons.length; i++) {
+        closeButtons[i].addEventListener('click', cerrarModal);
+        closeButtons[i].addEventListener('click', cerrarModalInfo);
+    }
 </script>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

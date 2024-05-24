@@ -1,5 +1,7 @@
 <?php
 require_once "php/auth.php";
+require_once "php/mostrar_lista_empleados.php";
+check_is_rol(["Administrador"]);
 ?>
 
 
@@ -11,6 +13,7 @@ require_once "php/auth.php";
     <title>Usuario</title>
     <link href="styles/usuario.css" rel="stylesheet">
     <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/sidebar.css" rel="stylesheet">
     <link href="styles/normalize.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -25,76 +28,44 @@ require_once "php/barraLateral.php";
 <main>
     <h1>Administración de Empleados</h1>
 
-<form id="employeeForm">
-    <input type="hidden" id="employeeId">
+<form id = "employeeForm" action="php/registrar_empleado.php" method="post">
+    <!-- <input type="hidden" id="employeeId"> -->
 
-    <label for="employeeName">Nombre:</label>
-    <input type="text" id="employeeName" name="employeeName" required>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
 
-    <label for="employeeLastName">Apellido:</label>
-    <input type="text" id="employeeLastName" name="employeeLastName" required>
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" required>
 
-    <label for="employeeUsername">Nombre de usuario:</label>
-    <input type="text" id="employeeUsername" name="employeeUsername" required>
+    <label for="usuario">Nombre de usuario:</label>
+    <input type="text" id="usuario" name="usuario" required>
 
-    <label for="employeePassword">Contraseña:</label>
-    <input type="text" id="employeePassword" name="employeePassword" required>
+    <label for="rol">Rol:</label><br>
+    <select name="rol" id="rol">
+        <option value="Administrador">Administrador</option>
+        <option value="Empleado">Empleado</option>
+    </select>
 
-    <button type="button" onclick="createEmployee()">Crear Empleado</button>
-    <!-- <button type="button" onclick="updateEmployee()">Actualizar Empleado</button> -->
-    <!-- <button type="button" onclick="deleteEmployee()">Eliminar Empleado</button> -->
+    <br>
+    <br>
+    <br>
+
+    <label for="contra">Contraseña:</label>
+    <input type="password" id="contra" name="contra" required>
+
+    <button type="submit">Crear Empleado</button>
 </form>
-
-<!-- <h2>Permisos</h2>
-<form id="permissionsForm">
-    <div>
-        <input type="checkbox" id="dashboard" name="dashboard">
-        <label for="dashboard">Procesos</label>
-    </div>
-    <div>
-        <input type="checkbox" id="reports" name="reports">
-        <label for="reports">Gráficas</label>
-    </div>
-    <div>
-        <input type="checkbox" id="dashboard" name="dashboard">
-        <label for="dashboard">Ventas</label>
-    </div>
-    <div>
-        <input type="checkbox" id="reports" name="reports">
-        <label for="reports">Usuario</label>
-    </div>
-    <button type="button" onclick="updatePermissions()">Actualizar Permisos</button>
-</form> -->
 
 <div id="employeeList">
     <!-- Lista de empleados se cargará aquí -->
-    Nombre de una persona aqui 
-    <select name="rol" id="rol">
-        <option value="Administrador">Administrador</option>
-        <option value="Empleado">Empleado</option>
-    </select>
-    <button>Aceptar</button>
-    <button>Eliminar Empleado</button>
-    <br>
-    <br>
-    <br>
-    Nombre de otra persona aqui
-    <select name="rol" id="rol">
-        <option value="Administrador">Administrador</option>
-        <option value="Empleado">Empleado</option>
-    </select>
-    <button>Aceptar</button>
-    <button>Eliminar Empleado</button>
-    <br>
-    <br>
-    <br>
-    Alguien mas va aqui y tambien tiene un nombre
-    <select name="rol" id="rol">
-        <option value="Administrador">Administrador</option>
-        <option value="Empleado">Empleado</option>
-    </select>
-    <button>Aceptar</button>
-    <button>Eliminar Empleado</button>
+
+    <!-- (continuacion de registrar_empleado.php )
+    y aqui leer la informacion de la base de datos para mostrar los empleados y sus respectivos
+    botones -->
+    <?php
+        mostrar_empleados();
+    ?>
+    
 </div>
 </main>
 
