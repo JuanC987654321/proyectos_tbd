@@ -2,9 +2,9 @@
 // document.addEventListener('DOMContentLoaded', function() {
 //dibujarGrafica(60, 30, 20, 10, 5);
 
-async function fetchRatings() {
+async function fetchRatings(filepath) {
     try {
-        const response = await fetch('./php/cargar_calif.php');
+        const response = await fetch(filepath);
         const data = await response.json();
         console.log('Datos recibidos:', data); // Añade este log
         return data;
@@ -13,13 +13,13 @@ async function fetchRatings() {
     }
 }
 
-async function dibujarGrafica() {
-    const data = await fetchRatings();
+async function dibujarGrafica(filepath, elementId) {
+    const data = await fetchRatings(filepath);
     if (!data) return;
 
-    console.log('Datos para la gráfica:', data); // Añade este log
+    console.log('Datos para la gráfica:', data);
     
-    const ctx = document.getElementById('salesChart').getContext('2d');
+    const ctx = document.getElementById(elementId).getContext('2d');
     const salesChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -45,6 +45,7 @@ async function dibujarGrafica() {
             }]
         },
         options: {
+            responsive: false,
             scales: {
                 y: {
                     beginAtZero: true
@@ -55,4 +56,7 @@ async function dibujarGrafica() {
 }
 
 // Llamar a la función para dibujar la gráfica
-dibujarGrafica();
+dibujarGrafica('./php/cargar_calif1.php', "salesChart");
+dibujarGrafica('./php/cargar_calif2.php', "salesChart2");
+dibujarGrafica('./php/cargar_calif3.php', "salesChart3");
+

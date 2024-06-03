@@ -68,7 +68,12 @@ check_is_rol(["Empleado", "Administrador"]);
         <h1>Pizarra de Notas</h1>
         <form method="post" action="" onsubmit="validateForm(event)">
             <textarea name="nota" placeholder="Escribe tu nota aquí..."></textarea><br>
-            <input type="color" name="color" value="#ffffff"><br>
+            <select id="color" name="color" onchange="changeSelectColor(this)">
+                <option value="#ff0000">Rojo</option>
+                <option value="#00ff00">Verde</option>
+            </select>
+            <br>
+            <!-- <input type="color" name="color" value="#ffffff"><br> -->
             <button type="submit">Agregar Nota</button>
         </form>
         <form method="post" action="" onsubmit="confirmDelete(event)">
@@ -92,6 +97,51 @@ check_is_rol(["Empleado", "Administrador"]);
         </form>
     </main>
 </body>
+
+<style>
+    select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border: 1px solid #ccc;
+        padding: 5px;
+        font-size: 16px;
+        background-color: #fff;
+        color: #000;
+        cursor: pointer;
+        }
+        
+        option {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Colores personalizados para las opciones */
+        option[value="#ff0000"] {
+            background-color: #ff0000;
+            color: #fff;
+        }
+
+        option[value="#00ff00"] {
+            background-color: #00ff00;
+            color: #fff;
+        }
+</style>
+
+
+<script>
+    function changeSelectColor(selectElement) {
+        var selectedColor = selectElement.value;
+        selectElement.style.backgroundColor = selectedColor;
+        selectElement.style.color = '#fff'; // Asegura que el texto sea visible
+    }
+
+    // Inicializa el color al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+        var selectElement = document.getElementById('color');
+        changeSelectColor(selectElement);
+    });
+</script>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

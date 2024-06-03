@@ -14,7 +14,6 @@ function buscar($conexion){
 
     if($res_busqueda->num_rows > 0){
         while ($filaBuy = mysqli_fetch_array($res_busqueda)) {
-            //attention terminar la busqueda del segundo query aqui
             $busqueda_query2 = "SELECT * FROM sales_history WHERE id_process = " . $filaBuy["ID_Process"];
             $res_busqueda2 = $conexion->query($busqueda_query2);
             if($res_busqueda2->num_rows > 0){
@@ -49,6 +48,7 @@ function buscar($conexion){
             setcookie("nombre", $nombre, time() +3600, "/");
             setcookie("precio", $precio, time() + 3600, "/");
             setcookie("abono", $abono, time() + 3600, "/");
+            setcookie("idProc", $filaBuy["ID_Process"], time() + 3600, "/");
 
             //envia a la pagina donde se mostrara esta informacion
             header("location:../tracking.php");

@@ -3,10 +3,24 @@
 require_once "connect.php";
 if(isset($_GET['accion']) && function_exists($_GET['accion'])) {
     $accion = $_GET['accion'];
+    //echo $_GET["param"];
     $param = $_GET["param"];
-    $accion($param); // Llamar a la función
+    $param2 = $_GET["param2"];
+
+    // Llamar a la función
+    if ($param2 != ""){
+        $accion($param, $param2);
+    }else{
+        $accion($param);
+    }
 }
+
+function buscar_por_fechas($param, $param2){
+    echo "<script>window.location='../servicios.php?fecha_inicio=" . $param . "&fecha_final=" . $param2 . "';</script>";
+}
+
 function buscar_por_status($param){
+    echo $param;
     echo "<script>window.location='../servicios.php?status=" . $param . "';</script>";
 }
 

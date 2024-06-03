@@ -27,7 +27,15 @@ require_once "php/barraLateral.php";
 
 <main>
     <h1>Calificacion de Servicios</h1>
+    <br><br><br><br>
+    <h2>Tiempo de finalizacion</h2>
     <canvas id="salesChart" width="400" height="200"></canvas>
+    <br><br><br><br>
+    <h2>Calidad del material</h2>
+    <canvas id="salesChart2" width="400" height="200"></canvas>
+    <br><br><br><br>
+    <h2>Servicio al cliente</h2>
+    <canvas id="salesChart3" width="400" height="200"></canvas>
     <script src="js/Graficas.js"></script>
     <script src="js/script.js"></script>
 </main>
